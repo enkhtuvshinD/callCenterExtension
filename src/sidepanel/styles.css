@@ -1,0 +1,406 @@
+:root {
+  font-family: "Avenir Next", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+  color: #eef2f4;
+  background:
+    radial-gradient(circle at top left, rgba(231, 126, 54, 0.32), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(30, 93, 138, 0.35), transparent 32%),
+    linear-gradient(180deg, #0a1821 0%, #102533 48%, #09131b 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 340px;
+  min-height: 100vh;
+  background: transparent;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.top-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.top-bar h1,
+.hero-card h2,
+.surface-card h3 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: #f7be7d;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.status-pill,
+.config-chip,
+.call-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.status-pill {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(7, 16, 24, 0.44);
+}
+
+.status-registered {
+  background: rgba(35, 106, 77, 0.24);
+  color: #b3f4cd;
+}
+
+.status-connecting {
+  background: rgba(206, 127, 52, 0.24);
+  color: #ffdcb1;
+}
+
+.status-failed {
+  background: rgba(138, 38, 28, 0.28);
+  color: #ffc5bc;
+}
+
+.status-idle,
+.status-unregistered {
+  background: rgba(116, 144, 165, 0.2);
+  color: #dce9f2;
+}
+
+.panel-switcher {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tab-button {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 10px 12px;
+  color: #cddbe5;
+  background: rgba(9, 19, 27, 0.42);
+}
+
+.tab-button.active {
+  border-color: rgba(241, 175, 103, 0.44);
+  background: linear-gradient(135deg, rgba(230, 117, 48, 0.3), rgba(25, 81, 123, 0.4));
+  color: #fff7ea;
+}
+
+.banner {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(243, 185, 105, 0.24);
+  border-radius: 14px;
+  background: rgba(236, 141, 67, 0.14);
+  color: #ffe3b7;
+}
+
+.content-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-card,
+.surface-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 16px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+}
+
+.hero-card {
+  background:
+    radial-gradient(circle at top right, rgba(242, 186, 111, 0.24), transparent 36%),
+    linear-gradient(160deg, rgba(22, 52, 71, 0.92), rgba(10, 21, 31, 0.92));
+}
+
+.surface-card {
+  background: rgba(9, 19, 27, 0.72);
+}
+
+.hero-meta,
+.call-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 4px;
+  color: #84a3b7;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.muted,
+.hint-text,
+.activity-text {
+  color: #c2d0d8;
+  line-height: 1.45;
+}
+
+.activity-text,
+.error-text {
+  margin: 0;
+}
+
+.error-text {
+  margin-top: 10px;
+  color: #ffb8b0;
+  line-height: 1.4;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary-button,
+.secondary-button {
+  border-radius: 14px;
+  padding: 11px 14px;
+  border: 1px solid transparent;
+  transition: transform 120ms ease, opacity 120ms ease, border-color 120ms ease;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+  cursor: default;
+  opacity: 0.58;
+}
+
+.primary-button:not(:disabled):hover,
+.secondary-button:not(:disabled):hover,
+.tab-button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.primary-button {
+  color: #0b141c;
+  background: linear-gradient(135deg, #f1c38a, #e77d46);
+}
+
+.primary-button.danger,
+.secondary-button.danger {
+  color: #fff4f1;
+  background: linear-gradient(135deg, #ad2f2f, #de6943);
+}
+
+.secondary-button {
+  border-color: rgba(157, 184, 201, 0.16);
+  color: #dce9f2;
+  background: rgba(18, 36, 49, 0.76);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.config-chip {
+  background: rgba(36, 89, 131, 0.28);
+  color: #cce9ff;
+}
+
+.call-chip {
+  background: rgba(241, 195, 138, 0.18);
+  color: #ffe7c9;
+  text-transform: capitalize;
+}
+
+.call-active {
+  background: rgba(35, 106, 77, 0.25);
+  color: #b8f1ce;
+}
+
+.call-held {
+  background: rgba(31, 91, 141, 0.26);
+  color: #cae8fb;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.field span,
+.checkbox-row span {
+  color: #a8bcc8;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  padding: 11px 12px;
+  color: #f7fafc;
+  background: rgba(4, 12, 19, 0.55);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: rgba(241, 195, 138, 0.56);
+  box-shadow: 0 0 0 3px rgba(236, 141, 67, 0.16);
+}
+
+.dialpad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.dialpad-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 72px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  color: #f4f7fa;
+  background:
+    radial-gradient(circle at top, rgba(241, 195, 138, 0.14), transparent 48%),
+    rgba(8, 17, 25, 0.82);
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease, opacity 120ms ease;
+}
+
+.dialpad-button:disabled {
+  cursor: default;
+  opacity: 0.58;
+}
+
+.dialpad-button:not(:disabled):hover {
+  transform: translateY(-1px);
+  border-color: rgba(241, 195, 138, 0.26);
+  background:
+    radial-gradient(circle at top, rgba(241, 195, 138, 0.22), transparent 52%),
+    rgba(12, 24, 35, 0.9);
+}
+
+.dialpad-tone {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.dialpad-letters {
+  min-height: 13px;
+  color: #9fb5c3;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.subsection-stack {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.subsection-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.subsection-header strong {
+  display: block;
+}
+
+.dtmf-readout {
+  align-self: center;
+  color: #cddbe5;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 14px 0;
+}
+
+.checkbox-row input {
+  margin-top: 2px;
+}
+
+.validation-box {
+  margin: 12px 0 16px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(166, 44, 32, 0.16);
+  border: 1px solid rgba(255, 168, 158, 0.16);
+  color: #ffcdc5;
+}
+
+.validation-box p {
+  margin: 0;
+}
+
+@media (max-width: 440px) {
+  .field-grid,
+  .hero-meta,
+  .call-grid {
+    grid-template-columns: 1fr;
+  }
+}

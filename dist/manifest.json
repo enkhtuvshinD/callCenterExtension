@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "PulseDock Call Center",
+  "description": "React + JsSIP side panel softphone scaffold for Chrome-based call center workflows.",
+  "version": "0.1.0",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage", "sidePanel", "offscreen", "permissions"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Open PulseDock"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' http://* https://* ws://* wss://*;"
+  }
+}
