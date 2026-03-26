@@ -25,6 +25,7 @@ Chrome side panel extension scaffold for a browser-based call center softphone u
 - `src/offscreen/CallManager.ts`: JsSIP registration and session control
 - `src/offscreen/index.ts`: offscreen runtime entry
 - `src/sidepanel/App.tsx`: main operator UI
+- `src/sidepanel/SipProvider.tsx`: React context wrapper around the extension SIP runtime
 - `src/shared/*`: shared types, storage and runtime helpers
 
 ## Local setup
